@@ -12,7 +12,7 @@ export const productApi = createApi({
             return headers;
         }
     }),
-    endpoints:  (builder) => ({
+    endpoints: (builder) => ({
         getProducts: builder.query({
             query: (params) => `generate_business_name?business_detail=${params.description}`
         }),
