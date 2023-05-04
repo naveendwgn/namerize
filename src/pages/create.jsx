@@ -28,27 +28,27 @@ function create() {
         The resnponse would be: Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker<br/>
         </p>
         <form
-        className='justify-center flex flex-col items-center'
-        onSubmit={handleSubmit}
-        >
-          <input 
-          type="text" 
-          placeholder="Product description" 
-          value={product.description}
-          onChange={(e) => setProduct({...product, description: e.target.value})}
-          required
-          className="mx-64 w-full rounded-lg p-4 outline-1 outline-white sm:mt-7 sm:w-3/4 bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f]"
-          />
+  className='justify-center flex flex-col items-center sm:w-3/4'
+  onSubmit={handleSubmit}
+>
+  <input 
+    type="text" 
+    placeholder="Product description" 
+    value={product.description}
+    onChange={(e) => setProduct({...product, description: e.target.value})}
+    required
+    className="w-full px-4 py-3 rounded-lg mb-4 outline-1 outline-white bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f] sm:mb-0 sm:w-3/4 sm:mr-4"
+  />
 
-          <button
-          type="submit"
-          className='bg-[#0ac37f] text-[#ffffff] px-9 py-2 rounded-lg mt-8 hover:bg-[#0ac37fe4]'
-          >
-              Generate
-          </button>
-          {/*Display results*/}
+  <button
+    type="submit"
+    className=' mt-6 bg-[#0ac37f] text-[#ffffff] px-6 py-3 rounded-lg hover:bg-[#0ac37fe4]'
+  >
+    Generate →
+  </button>
+  {/*Display results*/}
+</form>
 
-        </form>
     </div>
   )
 }
