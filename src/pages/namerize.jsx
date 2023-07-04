@@ -8,7 +8,7 @@ function namerize() {
   return (
     <div className="flex flex-col items-center justify-center px-6 py-28">
       <h1 className='text-6xl font-bold text-center mb-6'>
-      Generate Perfect Product Names with<br/> Nameriz<span class="text-[#0ac37f]">e</span>
+      Generate Perfect Product Names with<br/> Nameriz<span className="text-[#0ac37f]">e</span>
       </h1>
       <p className='text-lg text-gray-400 text-center mt-4'>
       Struggling to find the perfect name for your next project or business?

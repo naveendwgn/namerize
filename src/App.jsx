@@ -9,13 +9,9 @@ function App() {
     <BrowserRouter>
     <div className="w-full sm:px-8 py-4 px-8 bg-[#000]">
       <header className="flex items-center sm:px-8 px-6 py-4">
-          <Link to="/" className="flex items-center mr-auto">
-           <a href="/"> 
-            <h1 className="text-2xl font-bold"
-              >nameriz<span class="text-[#0ac37f]">e</span>
-            </h1>
+           <a href="/"
+              >nameriz<span className="text-[#0ac37f]">e</span>
            </a>
-          </Link>
           <div className="flex items-center ml-auto">
             <a href="https://github.com/naveendwgn/namerize" className="text-3xl mr-2">
               <FaGithub />
@@ -31,7 +27,7 @@ function App() {
       <footer className='flex items-center justify-center w-full h-24'>
         <div>
           <p className="text-center text-gray-500 text-xs">
-            © 2023 nameriz<span class="text-[#0ac37f]">e</span>. Powered by <a href="https://openai.com/" className="text-[#0ac37f]">OpenAI</a>
+            © 2023 nameriz<span className="text-[#0ac37f]">e</span>. Powered by OpenAI
           </p>
         </div>
       </footer>

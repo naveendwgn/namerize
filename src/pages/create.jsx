@@ -1,22 +1,45 @@
 import { useState, useEffect } from 'react'
-import { useLazyGetProductsQuery } from '../services/productName';
+
+const API_KEY = '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';
 
 function create() {
 
-  const [product, setProduct] = useState({
-    description: '',
-    result: ''
-  });
+  const [productDescription, setProductDescription] = useState('');
+  const [seedWords, setSeedWords] = useState('');
+  const [productNames, setProductNames] = useState('');
+  /*-H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"*/
 
-  const [getResult, { error, isFetching }] = useLazyGetProductsQuery();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { data } = await getResult( { description: product.description } );
+  async function callOpenAI() {
+    console.log('Generating names...')
 
-    setProduct({...product, result: data.result});
-    console.log(data.result);
-}
+    const APIBody = {
+      "model": "text-davinci-003",
+      "prompt": `Product description: ${productDescription} \n Seed words: ${seedWords} \n Product Names:`,
+      "temperature": 0.8,
+      "max_tokens": 60,
+      "top_p": 1.0,
+      "frequency_penalty": 0.0,
+      "presence_penalty": 0.0
+    }
+
+    await fetch("https://api.openai.com/v1/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify(APIBody)
+    }).then((data)=>{
+      return data.json();
+    }).then((data)=>{
+      console.log(data)
+    })
+  }
+
+  console.log(productDescription)
+  console.log(seedWords)
 
   return (
     <div className="flex flex-col items-center justify-center py-12">
@@ -25,30 +48,34 @@ function create() {
         <p className='text-lg text-gray-400  mt-4 bg-[#141414] mb-8 p-6 rounded-lg'>
         Product description: A home milkshake maker <br/>
         Seed words: fast, healthy, compact.<br/>
-        The resnponse would be: Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker<br/>
+        Results: HomeShaker, Fit Shaker, QuickShake, Shake Maker<br/>
         </p>
-        <form
-  className='justify-center flex flex-col items-center sm:w-3/4'
-  onSubmit={handleSubmit}
->
-  <input 
-    type="text" 
-    placeholder="Product description" 
-    value={product.description}
-    onChange={(e) => setProduct({...product, description: e.target.value})}
-    required
-    className="w-full px-4 py-3 rounded-lg mb-4 outline-1 outline-white bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f] sm:mb-0 sm:w-3/4 sm:mr-4"
-  />
-
-  <button
-    type="submit"
-    className=' mt-6 bg-[#0ac37f] text-[#ffffff] px-6 py-3 rounded-lg hover:bg-[#0ac37fe4]'
-  >
-    Generate →
-  </button>
-  {/*Display results*/}
-</form>
-
+        <div>
+          <input
+            type="text" 
+            placeholder="Product description"
+            onChange={(e) => setProductDescription(e.target.value)}
+            required
+            className="w-full px-4 py-3 rounded-lg mb-4 outline-1 outline-white bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f] sm:mb-0 sm:w-3/4 sm:mr-4"
+          />
+          <input
+            type="text" 
+            placeholder="Seed words"
+            onChange={(e) => setSeedWords(e.target.value)}
+            required
+            className="w-full px-4 py-3 rounded-lg mb-4 mt-3 outline-1 outline-white bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f] sm:mb-0 sm:w-3/4 sm:mr-4"
+          />
+          <div>
+        <button 
+        className='flex items-center justify-center
+         bg-[#0ac37f] text-[#ffffff] px-5 py-2 rounded-lg mt-4 hover:bg-[#0ac37fe4]'
+        onClick={callOpenAI}>Generate
+        </button>
+        {productNames !== '' ?
+        <p>{productNames}</p>
+        : null}
+        </div>
+        </div>
     </div>
   )
 }
