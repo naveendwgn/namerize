@@ -62,7 +62,7 @@ function create() {
           />
           <input
             type="text" 
-            placeholder="Seed words"
+            placeholder="Seed words (comma separated)"
             onChange={(e) => setSeedWords(e.target.value)}
             required
             className="w-full px-4 py-3 rounded-lg mb-4 mt-3 outline-1 outline-white bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f] sm:mb-0 sm:w-3/4 sm:mr-4"
