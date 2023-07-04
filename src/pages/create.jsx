@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 
-const API_KEY = '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';
 
 function create() {
+
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
   const [productDescription, setProductDescription] = useState('');
   const [seedWords, setSeedWords] = useState('');
@@ -16,7 +17,7 @@ function create() {
 
     const APIBody = {
       "model": "text-davinci-003",
-      "prompt": `Product description: ${productDescription} \n Seed words: ${seedWords} \n Product Names:`,
+      "prompt": `Product description: ${productDescription} \n Seed words: ${seedWords} \n Genrate 3 Product Names:`,
       "temperature": 0.8,
       "max_tokens": 60,
       "top_p": 1.0,
@@ -35,6 +36,7 @@ function create() {
       return data.json();
     }).then((data)=>{
       console.log(data)
+      setProductNames(data.choices[0].text.trim())
     })
   }
 
@@ -50,7 +52,7 @@ function create() {
         Seed words: fast, healthy, compact.<br/>
         Results: HomeShaker, Fit Shaker, QuickShake, Shake Maker<br/>
         </p>
-        <div>
+        <div className="flex flex-col items-center justify-center w-5/6 sm:w-1/2">
           <input
             type="text" 
             placeholder="Product description"
@@ -65,16 +67,19 @@ function create() {
             required
             className="w-full px-4 py-3 rounded-lg mb-4 mt-3 outline-1 outline-white bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f] sm:mb-0 sm:w-3/4 sm:mr-4"
           />
-          <div>
-        <button 
-        className='flex items-center justify-center
-         bg-[#0ac37f] text-[#ffffff] px-5 py-2 rounded-lg mt-4 hover:bg-[#0ac37fe4]'
-        onClick={callOpenAI}>Generate
-        </button>
-        {productNames !== '' ?
-        <p>{productNames}</p>
-        : null}
+          <div className="flex justify-center items-center">
+            <button 
+            className='bg-[#0ac37f] text-[#ffffff] px-5 py-2 rounded-lg mt-4 hover:bg-[#0ac37fe4]'
+            onClick={callOpenAI}>Generate
+            </button>
         </div>
+        {productNames !== '' ?
+            <div className="flex flex-col items-center justify-center w-5/6 sm:w-1/2">
+              <p className='text-lg text-gray-400  mt-4 bg-[#141414] mb-8 p-6 rounded-lg'>
+                Results: {productNames}
+              </p>
+            </div>
+            : null}
         </div>
     </div>
   )
