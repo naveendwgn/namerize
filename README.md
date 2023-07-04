@@ -7,10 +7,11 @@ The Namerize is a web app which helps in generating Product Names with AI
 - Responsive Design
 
 ## Tech Stack
-- Vite
-- React
-- Tailwind CSS
-- OpenAI API
+- Vite - build tool
+- React.js - framework
+- Tailwind CSS - styling
+- OpenAI API - for generating product names
+- Vercel - deployments
 
 ## How to run
 - Clone the repo
