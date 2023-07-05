@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { TbCircle1Filled, TbCircle2Filled} from 'react-icons/tb'
 
 
 function create() {
@@ -14,7 +15,7 @@ function create() {
 
     const APIBody = {
       "model": "text-davinci-003",
-      "prompt": `Product description: ${productDescription} \n Seed words: ${seedWords} \n Generate 4 Product Names:`,
+      "prompt": `Product description: ${productDescription} \n Seed words: ${seedWords} \n Generate 3 unique Product Names:`,
       "temperature": 0.8,
       "max_tokens": 60,
       "top_p": 1.0,
@@ -49,24 +50,40 @@ function create() {
         Results: HomeShaker, Fit Shaker, QuickShake, Shake Maker<br/>
         </p>
         <div className="flex flex-col items-center justify-center w-5/6 sm:w-1/2">
+           <div className="flex items-center justify-center mb-2">
+              <div className="text-[#0ac37f] text-3xl mr-2">
+                <TbCircle1Filled />
+              </div>
+              <p className="text-sm text-white font-bold text-center">
+                Write a few sentences describing your product
+              </p>
+            </div>
           <input
             type="text" 
-            placeholder="Product description"
+            placeholder="e.g. A home milkshake maker"
             onChange={(e) => setProductDescription(e.target.value)}
             required
             className="w-full px-4 py-3 rounded-lg mb-4 outline-1 outline-white bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f] sm:mb-0 sm:w-3/4 sm:mr-4"
           />
+          <div className="flex items-center justify-center mt-2">
+              <div className="text-[#0ac37f] text-3xl mr-2">
+                <TbCircle2Filled />
+              </div>
+              <p className="text-sm text-white font-bold text-center">
+                Enter seed words (comma separated)
+              </p>
+            </div>
           <input
             type="text" 
-            placeholder="Seed words (comma separated)"
+            placeholder="e.g. fast, healthy, compact"
             onChange={(e) => setSeedWords(e.target.value)}
             required
             className="w-full px-4 py-3 rounded-lg mb-4 mt-3 outline-1 outline-white bg-[#141414] text-white border border-[#0ac37f] focus:outline-none focus:border-[#0ac37f] sm:mb-0 sm:w-3/4 sm:mr-4"
           />
           <div className="flex justify-center items-center">
             <button 
-            className='bg-[#0ac37f] text-[#ffffff] px-5 py-2 rounded-lg mt-4 hover:bg-[#0ac37fe4]'
-            onClick={callOpenAI}>Generate
+            className='bg-[#0ac37f] text-[#ffffff] px-5 py-2 rounded-lg mt-6 hover:bg-[#0ac37fe4]'
+            onClick={callOpenAI}>Generate →
             </button>
         </div>
         {productNames !== '' ?

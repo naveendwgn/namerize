@@ -27,7 +27,7 @@ function App() {
       </main>
       <footer className='flex items-center justify-center w-full h-24'>
         <div>
-          <p className="text-center text-gray-500 text-xs">
+          <p className="text-center text-gray-500 text-sm">
             © 2023 nameriz<span className="text-[#0ac37f]">e</span>. Powered by <a href="https://openai.com/" className="text-[#0ac37f]">OpenAI</a>
           </p>
         </div>
