@@ -1,7 +1,7 @@
 import React from 'react'
 import Namerize from './pages/namerize'
 import { FaGithub } from 'react-icons/fa'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Create from './pages/create'
 
 function App() {

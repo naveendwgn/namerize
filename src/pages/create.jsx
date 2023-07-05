@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 function create() {
@@ -8,16 +8,13 @@ function create() {
   const [productDescription, setProductDescription] = useState('');
   const [seedWords, setSeedWords] = useState('');
   const [productNames, setProductNames] = useState('');
-  /*-H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY"*/
-
-
+  
   async function callOpenAI() {
-    console.log('Generating names...')
+    /*console.log('Generating names...')*/
 
     const APIBody = {
       "model": "text-davinci-003",
-      "prompt": `Product description: ${productDescription} \n Seed words: ${seedWords} \n Genrate 3 Product Names:`,
+      "prompt": `Product description: ${productDescription} \n Seed words: ${seedWords} \n Generate 4 Product Names:`,
       "temperature": 0.8,
       "max_tokens": 60,
       "top_p": 1.0,
@@ -35,13 +32,12 @@ function create() {
     }).then((data)=>{
       return data.json();
     }).then((data)=>{
-      console.log(data)
       setProductNames(data.choices[0].text.trim())
     })
   }
 
-  console.log(productDescription)
-  console.log(seedWords)
+  /*console.log(productDescription)
+  console.log(seedWords)*/
 
   return (
     <div className="flex flex-col items-center justify-center py-12">
