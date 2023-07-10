@@ -25,7 +25,7 @@ The Namerize is a web app which helps in generating Product Names with AI
 - Clone the repo
 - Run `npm install`
 - Run `npm run dev`
-- Open `localhost:3000` in your browser
+- Open `localhost:5173` in your browser
 
 (Don't forget to add your OpenAI API key in `src/.env` file)
 
