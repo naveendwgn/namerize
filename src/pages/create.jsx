@@ -15,7 +15,7 @@ function create() {
 
     const APIBody = {
       "model": "text-davinci-003",
-      "prompt": `You will be provided with a product description and seed words, and your task is to generate 3 product names. Product description: ${productDescription} \n Seed words: ${seedWords}`,
+      "prompt": `You will be provided with a product description and seed words, and your task is to generate 3 product names. Product description: ${productDescription} \n Seed words: ${seedWords} Results:`,
       "temperature": 0.8,
       "max_tokens": 60,
       "top_p": 1.0,
@@ -88,8 +88,9 @@ function create() {
         </div>
         {productNames !== '' ?
             <div className="flex flex-col items-center justify-center w-5/6 sm:w-1/2">
-              <p className='text-lg text-gray-400  mt-4 bg-[#141414] mb-8 p-6 rounded-lg'>
-                Results: {productNames}
+              <p className='text-lg text-white  mt-4 bg-[#141414] mb-8 p-6 rounded-lg'>
+                Results: <br/>
+                {productNames}
               </p>
             </div>
             : null}
