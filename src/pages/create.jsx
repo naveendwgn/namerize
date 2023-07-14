@@ -15,7 +15,7 @@ function create() {
 
     const APIBody = {
       "model": "text-davinci-003",
-      "prompt": `Product description: ${productDescription} \n Seed words: ${seedWords} \n Generate 3 unique Product Names:`,
+      "prompt": `You will be provided with a product description and seed words, and your task is to generate 3 product names. Product description: ${productDescription} \n Seed words: ${seedWords}`,
       "temperature": 0.8,
       "max_tokens": 60,
       "top_p": 1.0,
